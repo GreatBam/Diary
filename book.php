@@ -4,7 +4,7 @@ session_start();
 
 $log = $_GET['log'];
 $userId = $_SESSION['id'];
-
+// comment test
 
 include("config.php");
 
