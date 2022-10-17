@@ -29,19 +29,18 @@ if(isset($_POST['submit'])) {
         $_SESSION['id'] = $result['userId'];
         if(empty($result['email'])) {
             $message = "<div class='alert alert-danger' role='alert'>Please create an account</div>";
-        } else {
-            if((password_verify($password, $hash)) == $result['password']) {
-                if($check === "on") {
-                    header("location:book.php?log=1");
-                } else {
-                    header("location:book.php");
-                }
+        } else if(password_verify($password, $result['password'])) {
+            if($check === "on") {
+                header("location:book.php?log=1");
             } else {
-                $message = "<div class='alert alert-danger' role='alert'>Invalid password</div>";
+                header("location:book.php");
             }
+        } else {
+            $message = "<div class='alert alert-danger' role='alert'>Invalid password</div>";
         }
     }
 }
+
 
 ?>
 
